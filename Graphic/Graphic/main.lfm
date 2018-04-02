@@ -1,0 +1,137 @@
+object frmMain: TfrmMain
+  Left = 210
+  Height = 536
+  Top = 112
+  Width = 784
+  Caption = 'Graphics'
+  ClientHeight = 536
+  ClientWidth = 784
+  OnCreate = FormCreate
+  LCLVersion = '1.8.2.0'
+  object pnlRight: TPanel
+    Left = 569
+    Height = 532
+    Top = 2
+    Width = 213
+    Align = alRight
+    BorderSpacing.Around = 2
+    BevelInner = bvRaised
+    BevelOuter = bvLowered
+    ClientHeight = 532
+    ClientWidth = 213
+    TabOrder = 0
+    object btnGraph: TButton
+      Left = 16
+      Height = 25
+      Top = 40
+      Width = 147
+      Caption = 'Graph'
+      OnClick = btnGraphClick
+      TabOrder = 0
+    end
+    object trbMax: TTrackBar
+      Left = 96
+      Height = 25
+      Top = 80
+      Width = 78
+      Max = 100
+      Min = 1
+      OnChange = trbMaxChange
+      Position = 1
+      TabOrder = 1
+    end
+    object trbMin: TTrackBar
+      Left = 16
+      Height = 25
+      Top = 80
+      Width = 84
+      Max = -1
+      Min = -100
+      OnChange = trbMinChange
+      Position = -1
+      TabOrder = 2
+    end
+    object chkProportional: TCheckBox
+      Left = 16
+      Height = 19
+      Top = 128
+      Width = 88
+      Caption = 'Porporcional'
+      OnChange = chkProportionalChange
+      TabOrder = 3
+    end
+    object ediPointX: TEdit
+      Left = 16
+      Height = 23
+      Top = 176
+      Width = 48
+      TabOrder = 4
+      Text = '1'
+    end
+    object ediPointY: TEdit
+      Left = 72
+      Height = 23
+      Top = 176
+      Width = 56
+      TabOrder = 5
+      Text = '1'
+    end
+    object btnPoint: TButton
+      Left = 136
+      Height = 25
+      Top = 175
+      Width = 59
+      Caption = 'Point'
+      OnClick = btnPointClick
+      TabOrder = 6
+    end
+  end
+  object chartGraphics: TChart
+    Left = 0
+    Height = 536
+    Top = 0
+    Width = 567
+    AxisList = <    
+      item
+        Grid.Color = clSilver
+        Marks.LabelBrush.Style = bsClear
+        Minors = <>
+        Title.LabelFont.Orientation = 900
+        Title.LabelBrush.Style = bsClear
+      end    
+      item
+        Grid.Color = clSilver
+        Alignment = calBottom
+        Marks.LabelBrush.Style = bsClear
+        Minors = <>
+        Title.LabelBrush.Style = bsClear
+      end>
+    BackColor = clWhite
+    Foot.Brush.Color = clBtnFace
+    Foot.Font.Color = clBlue
+    Title.Brush.Color = clBtnFace
+    Title.Font.Color = clBlue
+    Title.Text.Strings = (
+      'TAChart'
+    )
+    Align = alClient
+    object chartGraphicsFuncSeries1: TFuncSeries
+      Active = False
+      OnCalculate = chartGraphicsFuncSeries1Calculate
+    end
+    object chartGraphicsConstantLine1: TConstantLine
+      Arrow.Visible = True
+      LineStyle = lsVertical
+      Position = 0
+    end
+    object chartGraphicsConstantLine2: TConstantLine
+      Arrow.Visible = True
+      Position = 0
+    end
+    object chartGraphicsLineSeries1: TLineSeries
+      Pointer.Brush.Color = 13553407
+      Pointer.Pen.Color = clRed
+      Pointer.Style = psCircle
+    end
+  end
+end

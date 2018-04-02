@@ -1,0 +1,223 @@
+object Form1: TForm1
+  Left = 0
+  Height = 729
+  Top = 18
+  Width = 1362
+  Align = alClient
+  Caption = 'Form1'
+  ClientHeight = 729
+  ClientWidth = 1362
+  OnCreate = FormCreate
+  Position = poScreenCenter
+  LCLVersion = '1.8.2.0'
+  object StringGrid1: TStringGrid
+    Left = 72
+    Height = 176
+    Top = 78
+    Width = 872
+    AutoFillColumns = True
+    ColCount = 6
+    Columns = <    
+      item
+        Title.Caption = 'n'
+        Width = 145
+      end    
+      item
+        Title.Caption = 'A'
+        Width = 145
+      end    
+      item
+        Title.Caption = 'B'
+        Width = 145
+      end    
+      item
+        Title.Caption = 'Xn'
+        Width = 145
+      end    
+      item
+        Title.Caption = 'Sign'
+        Width = 145
+      end    
+      item
+        Title.Caption = 'Error'
+        Width = 145
+      end>
+    FixedCols = 0
+    TabOrder = 0
+    ColWidths = (
+      145
+      145
+      145
+      145
+      145
+      145
+    )
+  end
+  object Label1: TLabel
+    Left = 40
+    Height = 15
+    Top = 32
+    Width = 21
+    Caption = 'f(x)'
+    ParentColor = False
+  end
+  object function_line_edit: TEdit
+    Left = 72
+    Height = 23
+    Top = 32
+    Width = 159
+    TabOrder = 1
+    Text = '(2*x^3)+2'
+  end
+  object Label2: TLabel
+    Left = 257
+    Height = 15
+    Top = 32
+    Width = 10
+    Caption = 'A'
+    ParentColor = False
+  end
+  object a_line_edit: TEdit
+    Left = 272
+    Height = 23
+    Top = 32
+    Width = 96
+    TabOrder = 2
+  end
+  object Label3: TLabel
+    Left = 392
+    Height = 15
+    Top = 32
+    Width = 9
+    Caption = 'B'
+    ParentColor = False
+  end
+  object b_line_edit: TEdit
+    Left = 408
+    Height = 23
+    Top = 32
+    Width = 96
+    TabOrder = 3
+  end
+  object Label4: TLabel
+    Left = 512
+    Height = 15
+    Top = 32
+    Width = 30
+    Caption = 'Error'
+    ParentColor = False
+  end
+  object error_line_edit: TEdit
+    Left = 552
+    Height = 23
+    Top = 32
+    Width = 104
+    TabOrder = 4
+    Text = '0.0001'
+  end
+  object calculate_button: TButton
+    Left = 840
+    Height = 25
+    Top = 32
+    Width = 75
+    Caption = 'Calculate'
+    OnClick = calculate_buttonClick
+    TabOrder = 5
+  end
+  object chartGraphics: TChart
+    Left = 72
+    Height = 424
+    Top = 280
+    Width = 816
+    AxisList = <    
+      item
+        Grid.Color = clSilver
+        Marks.LabelBrush.Style = bsClear
+        Minors = <>
+        Title.LabelFont.Orientation = 900
+        Title.LabelBrush.Style = bsClear
+      end    
+      item
+        Grid.Color = clSilver
+        Alignment = calBottom
+        Marks.LabelBrush.Style = bsClear
+        Minors = <>
+        Title.LabelBrush.Style = bsClear
+      end>
+    BackColor = clWhite
+    Foot.Brush.Color = clBtnFace
+    Foot.Font.Color = clBlue
+    Title.Brush.Color = clBtnFace
+    Title.Font.Color = clBlue
+    Title.Text.Strings = (
+      'TAChart'
+    )
+    object chartGraphicsFuncSeries1: TFuncSeries
+      Active = False
+      OnCalculate = chartGraphicsFuncSeries1Calculate
+    end
+    object chartGraphicsConstantLine1: TConstantLine
+      Arrow.Visible = True
+      LineStyle = lsVertical
+      Position = 0
+    end
+    object chartGraphicsConstantLine2: TConstantLine
+      Arrow.Visible = True
+      Position = 0
+    end
+    object chartGraphicsLineSeries1: TLineSeries
+      Pointer.Brush.Color = 13553407
+      Pointer.Pen.Color = clRed
+      Pointer.Style = psCircle
+    end
+  end
+  object trbMax: TTrackBar
+    Left = 920
+    Height = 25
+    Top = 336
+    Width = 78
+    Max = 100
+    Min = 1
+    OnChange = trbMaxChange
+    Position = 1
+    TabOrder = 7
+  end
+  object trbMin: TTrackBar
+    Left = 920
+    Height = 25
+    Top = 296
+    Width = 84
+    Max = -1
+    Min = -100
+    OnChange = trbMinChange
+    Position = -1
+    TabOrder = 8
+  end
+  object chkProportional: TCheckBox
+    Left = 920
+    Height = 21
+    Top = 384
+    Width = 100
+    Caption = 'Porporcional'
+    OnChange = chkProportionalChange
+    TabOrder = 9
+  end
+  object type_method_combobox: TComboBox
+    Left = 680
+    Height = 23
+    Top = 32
+    Width = 136
+    ItemHeight = 15
+    TabOrder = 10
+    Text = 'type_method_combobox'
+  end
+  object Button1: TButton
+    Left = 928
+    Height = 25
+    Top = 32
+    Width = 75
+    Caption = 'Graph'
+    OnClick = Button1Click
+    TabOrder = 11
+  end
+end
