@@ -21,6 +21,8 @@ type
     chartGraphicsFuncSeries1: TFuncSeries;
     chartGraphicsLineSeries1: TLineSeries;
     chkProportional: TCheckBox;
+    line_edit_h: TEdit;
+    Label5: TLabel;
     lineedit_dfx: TEdit;
     Label_dfx: TLabel;
     type_method_combobox: TComboBox;
@@ -79,10 +81,12 @@ var tmp_result, x, y, intersect_y: Real;
   i: Integer;
   validate_result: TFooRec;
 begin
+  clear_grid();
   clear_chart();
   solver_eq:= SolverEq.create;
   solver_eq.MethodType:=type_method_combobox.ItemIndex;
   solver_eq.fx:= function_line_edit.Text;
+  //solver_eq.solve_h:=;
   solver_eq.deriv_fx:= lineedit_dfx.Text;
   solver_eq.ErrorAllowed:= StrToFloat(error_line_edit.Text);
   solver_eq.solve_a:= StrToFloat(a_line_edit.Text);

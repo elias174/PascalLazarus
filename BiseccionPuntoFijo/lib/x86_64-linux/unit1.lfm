@@ -236,4 +236,20 @@ object Form1: TForm1
     TabOrder = 12
     Text = '6*x^2'
   end
+  object Label5: TLabel
+    Left = 259
+    Height = 15
+    Top = 64
+    Width = 8
+    Caption = 'h'
+    ParentColor = False
+  end
+  object line_edit_h: TEdit
+    Left = 272
+    Height = 23
+    Top = 64
+    Width = 96
+    TabOrder = 13
+    Text = '0.00001'
+  end
 end

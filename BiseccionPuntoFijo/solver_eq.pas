@@ -19,6 +19,7 @@ type
     argument: TFPExprIdentifierDef;
     solve_a: Real;
     solve_b: Real;
+    solve_h: Real;
     ErrorAllowed: Real;
     MethodList: TstringList;
     MethodType: Integer;
@@ -28,6 +29,7 @@ type
     function bisection_method(): Real;
     function fake_position_method(): Real;
     function newton_rapsody_method(): Real;
+    function secant_method(): Real;
     function eval_fx(x: Real): Real;
     function eval_deriv_fx(x: Real): Real;
     procedure clear();
@@ -58,8 +60,8 @@ begin
      MethodList:= TStringList.Create;
      MethodList.AddObject( 'bisection', TObject( IsBisection ) );
      MethodList.AddObject( 'fake position', TObject( IsFakePosition ) );
-     MethodList.AddObject( 'newthon_rapshody', TObject( IsNewtonRapsody) );
-     MethodList.AddObject( 'secant', TObject( IsNewtonRapsody) );
+     MethodList.AddObject( 'newthon_rapshody', TObject( IsNewtonRapsody ) );
+     MethodList.AddObject( 'secant', TObject( IsSecant ) );
 
 
 
@@ -78,6 +80,7 @@ begin
           IsBisection: Result:= bisection_method();
           IsFakePosition: Result:= fake_position_method();
           IsNewtonRapsody: Result:= newton_rapsody_method();
+          IsSecant: Result:= secant_method();
      end;
 end;
 
@@ -105,8 +108,13 @@ var balz: Real;
 begin
      Result.S:= '';
      Result.B:= True;
-     if MethodType = IsNewtonRapsody then
+     if MethodType >= IsNewtonRapsody then begin
+        if (MethodType = IsSecant) and (solve_h >= ErrorAllowed) then begin
+           Result.S:= 'H >= ' + FloatToStr(ErrorAllowed);
+           Result.B:= False;
+        end;
         Exit;
+     end;
      balz:= eval_fx(solve_a) * eval_fx(solve_b);
      if balz >= 0 then begin
        Result.S:= 'f(a)*f(b)= ' + FloatToStr(balz) + ' its >= 0 ';
@@ -144,6 +152,28 @@ begin
      n:= 1;
      repeat
            xn:= xn - (eval_fx(xn)/eval_deriv_fx(xn));
+           if n > 0 then begin
+              Error:=abs(Result - xn);
+              ErrorSequence.Add( FloatToStr(Error) );
+           end;
+           Sequence.Add( FloatToStr(xn) );
+           Result:= xn;
+           n:= n+1;
+     until ( Error <= ErrorAllowed ) or ( n >= Top );
+end;
+
+function SolverEq.secant_method(): Real;
+var n: Integer;
+  xn: Real;
+begin
+     clear();
+     xn:= solve_a;
+     Result:= xn;
+     Sequence.Add( FloatToStr(xn) );
+     ErrorSequence.Add( FloatToStr(Error) );
+     n:= 1;
+     repeat
+           xn:= xn - ( (2*solve_h*eval_fx(xn) / (eval_fx(xn+solve_h) - eval_fx(xn-solve_h) ) ) );
            if n > 0 then begin
               Error:=abs(Result - xn);
               ErrorSequence.Add( FloatToStr(Error) );
