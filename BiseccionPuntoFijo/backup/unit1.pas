@@ -21,6 +21,8 @@ type
     chartGraphicsFuncSeries1: TFuncSeries;
     chartGraphicsLineSeries1: TLineSeries;
     chkProportional: TCheckBox;
+    lineedit_dfx: TEdit;
+    Label_dfx: TLabel;
     type_method_combobox: TComboBox;
     function_line_edit: TEdit;
     a_line_edit: TEdit;
@@ -41,6 +43,7 @@ type
     procedure trbMaxChange(Sender: TObject);
     procedure trbMinChange(Sender: TObject);
     procedure clear_chart();
+    procedure clear_grid();
   private
     solver_eq: SolverEq;
   public
@@ -62,6 +65,15 @@ begin
   chartGraphicsLineSeries1.Clear;
 end;
 
+procedure TForm1.clear_grid();
+var
+  I: Integer;
+begin
+  for I := 0 to StringGrid1.ColCount - 1 do
+    StringGrid1.Cols[I].Clear;
+  StringGrid1.RowCount := 1;
+end;
+
 procedure TForm1.calculate_buttonClick(Sender: TObject);
 var tmp_result, x, y, intersect_y: Real;
   i: Integer;
@@ -71,6 +83,7 @@ begin
   solver_eq:= SolverEq.create;
   solver_eq.MethodType:=type_method_combobox.ItemIndex;
   solver_eq.fx:= function_line_edit.Text;
+  solver_eq.deriv_fx:= lineedit_dfx.Text;
   solver_eq.ErrorAllowed:= StrToFloat(error_line_edit.Text);
   solver_eq.solve_a:= StrToFloat(a_line_edit.Text);
   solver_eq.solve_b:= StrToFloat(b_line_edit.Text);
@@ -99,9 +112,7 @@ begin
   chartGraphicsLineSeries1.ShowLines:= False;
   chartGraphicsLineSeries1.ShowPoints:= True;
   chartGraphicsLineSeries1.AddXY( x, y );
-  //solver_eq.fx:= 'x^3-3*x';
-  //intersect_y:= solver_eq.eval_fx(tmp_result);
-  //ShowMessage('(' + FloatToStr(tmp_result) + ',' + FloatToStr(intersect_y) + ')' );
+
 
 
 end;
