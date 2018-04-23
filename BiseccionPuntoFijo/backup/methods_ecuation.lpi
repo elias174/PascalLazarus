@@ -29,7 +29,7 @@
         <PackageName Value="LCL"/>
       </Item2>
     </RequiredPackages>
-    <Units Count="3">
+    <Units Count="6">
       <Unit0>
         <Filename Value="methods_ecuation.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -46,6 +46,20 @@
         <Filename Value="solver_eq.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit2>
+      <Unit3>
+        <Filename Value="matrix.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Matrix"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="parsemath.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="ParseMath"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="generalized_solver_eq.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit5>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

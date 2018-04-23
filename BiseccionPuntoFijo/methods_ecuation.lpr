@@ -7,7 +7,8 @@ uses
   cthreads,
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, tachartlazaruspkg, Unit1, solver_eq
+  Forms, tachartlazaruspkg, Unit1, solver_eq, Matrix, ParseMath,
+  generalized_solver_eq
   { you can add units after this };
 
 {$R *.res}
